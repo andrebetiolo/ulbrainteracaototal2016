@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Ulbra - Interação total 2016</title>
+  </head>
+
+  <body>
+
+    <form>
+
+      <div class="input-container">
+        <label>Email</label>
+        <input type="email" name="email" required>
+      </div>
+
+      <div class="input-container">
+        <label>Senha</label>
+        <input type="password" name="senha" required>
+      </div>
+
+      <button type="submit">Logar</button>
+
+    </form>
+
+    <style>
+
+      body{
+        height: 100vh;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        /*Efeito Gradient*/
+        background: #4cd964;
+        background: -moz-linear-gradient(45deg,#4cd964 0%,#5ac8fa 100%);
+        background: -webkit-gradient(left bottom,right top,color-stop(0%,#4cd964),color-stop(100%,#5ac8fa));
+        background: -webkit-linear-gradient(45deg,#4cd964 0%,#5ac8fa 100%);
+        background: -o-linear-gradient(45deg,#4cd964 0%,#5ac8fa 100%);
+        background: -ms-linear-gradient(45deg,#4cd964 0%,#5ac8fa 100%);
+        background: linear-gradient(45deg,#4cd964 0%,#5ac8fa 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4cd964',endColorstr='#5ac8fa',GradientType=1);
+
+      }
+
+      form{
+        position: relative;
+        width: 50vw;
+        height: 50vh;
+
+        border-radius: 8px;
+
+        webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+
+        background: linear-gradient(to right, rgba(237, 237, 238, 1), #f7f7f8);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+      }
+
+      form:before{
+        content: 'AJAX exemplo';
+        font-size: 1.5rem;
+
+      }
+
+      .input-container{
+        max-width: 100%;
+        text-align: center;
+        font-size: 2rem;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .input-container input{
+        padding: 1rem;
+        max-width: 100%;
+      }
+
+      .input-container, button{
+        font-size: 2rem;
+      }
+
+      /* Exemplo de utilização de media query para Design Responsivo*/
+      @media (max-width: 1024px){
+        form{
+          width: 90vh;
+        }
+      }
+    </style>
+
+    <script>
+
+      document.querySelector('form').onsubmit = function(event){
+        event.preventDefault();
+
+        var parametros = {
+          email: document.querySelector('[name=email]').value,
+          senha: document.querySelector('[name=senha]').value
+        }
+
+        $.post("http://localhost/ulbrainteracaototal2016/api/login.php", parametros)
+          .done(function(resultadoJson){
+            alert(resultadoJson.mensagem);
+          })
+          .fail(function(erro){
+            alert(erro.responseJSON.mensagem);
+          })
+
+      }
+
+    </script>
+
+    <script src="jquery.js"></script>
+
+  </body>
+
+</html>
