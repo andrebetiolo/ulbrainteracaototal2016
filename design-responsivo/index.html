@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Design responsivo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Necessário ter em todas os sites responsivos-->
+  </head>
+  <body>
+
+    <style>
+
+      html, body{
+        height: 100%;
+        margin: 0;
+      }
+
+      /*Dica 2 - imagem*/
+      .responsiva{
+        max-width: 100%;
+      }
+
+      .imagem-responsiva{
+        display: none;
+      }
+
+      /*Dica 3 - Media Query*/
+      @media (max-width: 250px){
+
+        .responsiva{
+          display: none; /*Esconder a imagem responsiva*/
+        }
+
+        /*Troca da imagem para ima imagem menor*/
+        .imagem-responsiva{
+          display: block;
+          height: 224px;
+          background: url('imagem-responsiva.jpg');
+          background-size: contain;
+          color: cyan;
+          font-weight: bold;
+        }
+
+      }
+
+    </style>
+
+    <img src="ulbra-interacao-total-2016.jpg" alt="Imagem exemplo não responsiva"/>
+
+    <img class="responsiva" src="ulbra-interacao-total-2016.jpg" alt="Imagem exemplo responsiva"/>
+
+    <div class="imagem-responsiva">
+      Exemplo de troca de imagem usando Media Query
+    </div>
+
+  </body>
+</html>
